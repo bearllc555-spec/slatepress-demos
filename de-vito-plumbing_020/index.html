@@ -210,9 +210,10 @@ img{max-width:100%;display:block}
 /* ===== service area / map ===== */
 .area{padding:96px 0;background:#fafafa}
 .area-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.area-map{aspect-ratio:1/1;background:#fff;border-radius:12px;padding:24px;box-shadow:0 12px 32px rgba(0,0,0,.06);position:relative;overflow:hidden}
-.area-map svg{width:100%;height:100%}
-.area-map .pin{fill:var(--magenta);filter:drop-shadow(0 4px 6px rgba(217,23,111,.4))}
+.area-map{aspect-ratio:1/1;background:#fff;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.06);position:relative;overflow:hidden}
+.area-map iframe{width:100%;height:100%;border:0;display:block}
+.area-map-overlay{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.95);border:2px solid var(--magenta);border-radius:10px;padding:10px 14px;box-shadow:0 6px 18px rgba(217,23,111,.18);font-size:12px;font-weight:700;color:var(--ink);max-width:62%;line-height:1.5;backdrop-filter:saturate(140%) blur(4px);pointer-events:none}
+.area-map-overlay-eyebrow{display:block;font-size:10px;font-weight:800;color:var(--magenta);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
 .area h2{font-size:clamp(32px,4vw,48px);font-style:italic;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.04;margin:.5rem 0 18px}
 .area p{color:var(--ink-soft);font-size:16px;line-height:1.65;margin:0 0 26px;max-width:42ch}
 .area-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
@@ -438,7 +439,8 @@ footer{padding:36px 0;background:var(--ink);color:rgba(255,255,255,.5);font-size
       </div>
     </div>
     <!-- [SPEC: replace with real photo of Frank De Vito working on a boiler/HVAC unit] -->
-    <div class="member-img fx-row" data-row-delay="200" style="background-image:url('https://images.pexels.com/photos/4239013/pexels-photo-4239013.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900')">
+    <!-- v1.1 patch 2026-04-27 (revised): 4239013 was hands-only (failed § 4); first try 32588548 also failed Chrome verification (face cut off, Cyrillic appliance-repair branding, ambiguous trade). Final pick: 8486971 — Chrome-verified plumber in white hard hat + high-vis vest actively drilling into wall. Distinct from About (8486928) and Final CTA (8486978). -->
+    <div class="member-img fx-row" data-row-delay="200" style="background-image:url('https://images.pexels.com/photos/8486971/pexels-photo-8486971.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900')">
       <span class="member-img-badge"><span class="star">★</span> DMP CEDAR GROVE</span>
     </div>
   </div>
@@ -481,7 +483,8 @@ footer{padding:36px 0;background:var(--ink);color:rgba(255,255,255,.5);font-size
     <div class="about-img-wrap fx-row">
       <span class="about-since">Since 1986</span>
       <!-- [SPEC: replace with real photo of De Vito family / shop / Frank Sr. with truck] -->
-      <div class="about-img" style="background-image:url('https://images.pexels.com/photos/8961036/pexels-photo-8961036.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900')"></div>
+      <!-- v1.1 patch 2026-04-27: previous 8961036 was a MOUNTAIN LANDSCAPE (mis-tagged in verified-stock-ids.json as worker_portrait_male_older / worker_portrait_male_middle — total category-coding failure). Swapped to 8486928 (plumber portrait). Library entry removed, audit pending. NEEDS VISUAL VERIFICATION IN CHROME BEFORE RE-DEPLOY. -->
+      <div class="about-img" style="background-image:url('https://images.pexels.com/photos/8486928/pexels-photo-8486928.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900')"></div>
     </div>
     <div>
       <span class="eyebrow">About De Vito</span>
@@ -510,45 +513,18 @@ footer{padding:36px 0;background:var(--ink);color:rgba(255,255,255,.5);font-size
 
 <section class="area" id="area">
   <div class="wrap area-grid">
+    <!-- v1.2 Google Maps embed (replaces hand-built SVG region map). Anderson DNA layout: 1:1 framed iframe with magenta-bordered town overlay. Centered on Cedar Grove NJ HQ at zoom 12 — covers Verona / Caldwell / West Caldwell / Montclair / Little Falls / Cedar Grove in one view. No API key needed. -->
     <div class="area-map fx-row" data-row-delay="0">
-      <svg viewBox="0 0 400 400">
-        <!-- Stylized Essex County region with magenta pins -->
-        <rect x="0" y="0" width="400" height="400" fill="#f0f0f0"/>
-        <!-- roads -->
-        <g stroke="#d6d6d6" stroke-width="1.5" fill="none">
-          <path d="M0 80 L400 100"/>
-          <path d="M0 200 L400 220"/>
-          <path d="M0 320 L400 340"/>
-          <path d="M80 0 L100 400"/>
-          <path d="M200 0 L220 400"/>
-          <path d="M320 0 L340 400"/>
-        </g>
-        <!-- highways -->
-        <g stroke="#bcbcbc" stroke-width="2.5" fill="none">
-          <path d="M0 150 Q200 130 400 160"/>
-          <path d="M180 0 Q190 200 200 400"/>
-        </g>
-        <!-- pins (magenta) -->
-        <g class="pin">
-          <circle cx="200" cy="180" r="14"/>
-          <text x="200" y="186" font-size="14" font-weight="800" text-anchor="middle" fill="#fff">D</text>
-        </g>
-        <circle class="pin" cx="160" cy="140" r="9"/>
-        <circle class="pin" cx="240" cy="160" r="9"/>
-        <circle class="pin" cx="180" cy="220" r="9"/>
-        <circle class="pin" cx="220" cy="240" r="9"/>
-        <circle class="pin" cx="140" cy="200" r="9"/>
-        <circle class="pin" cx="260" cy="200" r="9"/>
-        <!-- town labels -->
-        <g font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#444">
-          <text x="200" y="170" text-anchor="middle" font-size="11" font-weight="800" fill="#D9176F">Cedar Grove</text>
-          <text x="160" y="125" text-anchor="middle">Verona</text>
-          <text x="240" y="148" text-anchor="middle">Caldwell</text>
-          <text x="180" y="252" text-anchor="middle">Montclair</text>
-          <text x="220" y="262" text-anchor="middle">Little Falls</text>
-          <text x="140" y="190" text-anchor="middle">W. Cald.</text>
-        </g>
-      </svg>
+      <iframe
+        src="https://maps.google.com/maps?q=Cedar+Grove,+NJ+07009&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="De Vito Plumbing service area — Cedar Grove NJ and surrounding Essex County">
+      </iframe>
+      <div class="area-map-overlay">
+        <span class="area-map-overlay-eyebrow">★ Service area</span>
+        Cedar Grove · Verona · Caldwell · West Caldwell · Montclair · Little Falls
+      </div>
     </div>
     <div>
       <span class="eyebrow">Service area</span>
@@ -618,7 +594,8 @@ footer{padding:36px 0;background:var(--ink);color:rgba(255,255,255,.5);font-size
 <section class="final">
   <div class="wrap final-inner">
     <!-- [SPEC: replace with real photo of De Vito painted fleet van — KILLER move per the thesis] -->
-    <div class="final-van fx-row" style="background-image:url('https://images.pexels.com/photos/4501779/pexels-photo-4501779.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"></div>
+    <!-- v1.1 patch 2026-04-27: previous 4501779 was a bare water-heater tank — failed § 4 (every-photo rule). Swapped to 8486978 (plumber/work shot). NEEDS VISUAL VERIFICATION IN CHROME BEFORE RE-DEPLOY. -->
+    <div class="final-van fx-row" style="background-image:url('https://images.pexels.com/photos/8486978/pexels-photo-8486978.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"></div>
     <div>
       <p class="final-tagline">Nobody answers the phone <em>like we do!</em><sup style="font-size:.4em;color:var(--gold)">®</sup></p>
       <p class="final-meta"><strong>Open 24 Hours</strong> · 24/7 Emergency Support Available</p>
@@ -731,17 +708,4 @@ footer{padding:36px 0;background:var(--ink);color:rgba(255,255,255,.5);font-size
   },700);
 
   // Path 3: scroll fallback — catch elements coming into view as user scrolls
-  var scrollHandler=function(){
-    all.forEach(function(el){
-      if(!el.classList.contains('in')&&inViewport(el,1.0)) reveal(el);
-    });
-  };
-  window.addEventListener('scroll',scrollHandler,{passive:true});
-
-  // Path 4: hard guarantee (2.5s) — reveal EVERYTHING regardless of viewport
-  setTimeout(function(){all.forEach(reveal);},2500);
-})();
-</script>
-
-</body>
-</html>
+  var scrollHandler
