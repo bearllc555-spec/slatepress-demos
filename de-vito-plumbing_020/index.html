@@ -707,4 +707,18 @@ footer{padding:36px 0;background:var(--ink);color:rgba(255,255,255,.5);font-size
     });
   },700);
 
-  // Path 3: scroll fallback — catch elements coming into view as u
+  // Path 3: scroll fallback — catch elements coming into view as user scrolls
+  var scrollHandler=function(){
+    all.forEach(function(el){
+      if(!el.classList.contains('in')&&inViewport(el,1.0)) reveal(el);
+    });
+  };
+  window.addEventListener('scroll',scrollHandler,{passive:true});
+
+  // Path 4: hard guarantee (2.5s) — reveal EVERYTHING regardless of viewport
+  setTimeout(function(){all.forEach(reveal);},2500);
+})();
+</script>
+
+</body>
+</html>
