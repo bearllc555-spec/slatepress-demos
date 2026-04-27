@@ -513,10 +513,10 @@ footer{padding:36px 0;background:var(--ink);color:rgba(255,255,255,.5);font-size
 
 <section class="area" id="area">
   <div class="wrap area-grid">
-    <!-- v1.2 Google Maps embed (replaces hand-built SVG region map). Anderson DNA layout: 1:1 framed iframe with magenta-bordered town overlay. Centered on Cedar Grove NJ HQ at zoom 12 — covers Verona / Caldwell / West Caldwell / Montclair / Little Falls / Cedar Grove in one view. No API key needed. -->
-    <div class="area-map fx-row" data-row-delay="0">
+    <!-- v1.2 Google Maps embed (replaces hand-built SVG region map). Anderson DNA layout: 1:1 framed iframe with magenta-bordered town overlay. Centered via lat/long on Cedar Grove NJ (40.8526, -74.2287) at zoom 12 — covers Verona / Caldwell / West Caldwell / Montclair / Little Falls / Cedar Grove. No API key needed. NOTE: NO fx-row on this element — the map should never animate-reveal. -->
+    <div class="area-map">
       <iframe
-        src="https://maps.google.com/maps?q=Cedar+Grove,+NJ+07009&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+        src="https://maps.google.com/maps?ll=40.8526,-74.2287&amp;z=12&amp;output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         title="De Vito Plumbing service area — Cedar Grove NJ and surrounding Essex County">
@@ -707,5 +707,4 @@ footer{padding:36px 0;background:var(--ink);color:rgba(255,255,255,.5);font-size
     });
   },700);
 
-  // Path 3: scroll fallback — catch elements coming into view as user scrolls
-  var scrollHandler
+  // Path 3: scroll fallback — catch elements coming into view as u
