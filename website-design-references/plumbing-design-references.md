@@ -91,6 +91,18 @@ plumbers in branded uniforms with chrome plumbing fixtures. Anderson goes a step
 with their *actual painted-pink fleet van and named technicians* — that specificity is the
 killer differentiator.
 
+**The hero photo is a category badge — not just decoration.** Stated by Anthony 2026-04-27
+after v017 shipped with a "gloved hand wiping a clean chrome surface" hero photo that
+read instantly as *cleaning service / maid* rather than plumber. **Visitors classify what
+kind of business a site is from the hero photo before they read the headline.** Pool photo →
+pool contractor. Pizza → pizzeria. Pristine bathroom → real estate listing. Gloved hand on
+chrome → maid service. If the photo and the headline contradict each other, the photo wins
+the visitor's gut. The hero must contain an unambiguous plumbing marker (wrench on pipe,
+P-trap mid-install, water heater being serviced, plumber with visible tools, branded fleet
+van). Diagnostic: a non-English-reading visitor should still know it's a plumber from the
+photo alone. Full ruleset in [plumbing-website-design-thesis.md § IV — The category-coding
+test](./plumbing-website-design-thesis.md).
+
 **Hero is a single dominant image — vertical worker portrait OR fleet vehicle.** Not a
 collage, not a slider, not a video bg. One image carries the hero. Plumbing X = vertical
 worker in royal-blue hardhat (full right column). Plumbly = kneeling silver-haired plumber
@@ -197,23 +209,3 @@ The pretty templates show *what to lift structurally* — palette discipline, he
 trust trio, stats, service cards. Anderson shows *the upgrade* — once the structure is
 right, replace stock with real-brand specificity (real fleet, real technicians, real review
 counts) and the page becomes uncopyable.
-
-For De Vito, that translates to: take Ref 001's structural restraint + Ref 002's IA
-sequence + Ref 003's conversion density (offers band, FAQ, video) + Ref 004's specificity
-discipline (real Frank De Vito portraits, photographed De Vito vans if they exist, actual
-reviewer names with concrete review-count attribution).
-
----
-
-## Ref 001 — Visual ceiling — Plumbing X (BRIX / Webflow Marketplace)
-
-**URL:** https://plumbingtemplate-showcase.webflow.io/home
-**Last verified:** 2026-04-27 (screenshots + source extracted via Chrome MCP)
-
-### Observed palette (from computed styles)
-
-- **Page background:** `#FFFFFF` white — primary canvas
-- **Accent / CTA / links:** `#3083FF` royal-blue (rgb 48, 131, 255). Used for Get-a-quote
-  button, "PLUMBERS" eyebrow, water-drop logo, email/phone/location utility-bar icons in pale
-  pill backgrounds, and slider-arrow circles.
-- **Display headline color:** `#182944` deep navy (rgb 24, 41, 68). H1 + H2 text on ligh

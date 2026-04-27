@@ -90,6 +90,37 @@ This is the single highest-leverage decision in plumbing-website design. The 15 
 
 For a customer that doesn't yet have professional photography, the move is: shoot the fleet (a phone shot of the truck parked in front of the shop is enough), shoot the owner (in uniform, against the shop wall), shoot one or two recent jobs (a kitchen sink they fixed last week — the homeowner gave permission). Three real photos beat thirty stock ones.
 
+### The category-coding test
+
+**The hero photo is a category badge.** Visitors classify what kind of business a website is from the image *before* they read the headline. A pool photo says pool contractor. A pizza shot says pizzeria. A stethoscope says doctor. A pristine countertop says kitchen remodel. *A gloved hand on a clean chrome surface says maid service.* If the photo signal contradicts the headline signal, the visitor's gut wins, the headline loses, and they bounce.
+
+The diagnostic: **a returning visitor who can't read English should still know what kind of business this is from the hero photo alone.** If the image could plausibly belong to an adjacent category — cleaning service, HVAC, hardware store, kitchen remodeler, real estate listing, generic-construction, landscaping — the photo is wrong, no matter how nice it looks.
+
+For a plumbing site, the hero photo MUST contain at least one unambiguous plumbing marker:
+
+- A wrench on a pipe or fitting (action visible, not a still life)
+- A P-trap, supply line, or chrome plumbing fixture mid-installation
+- A drain-cleaning machine or auger in use
+- A water heater being serviced (visible cylinder + tools)
+- A boiler or its valves
+- A faucet being repaired (hands + tools, not a clean magazine shot)
+- A plumber in a branded uniform with visible plumbing tools (wrench in hand, tool belt, pipe parts)
+- A fleet vehicle with plumbing branding visible (the killer specificity move)
+
+What does NOT category-code as plumbing — these all came up as failure cases in the v017–v020 batch:
+
+- A gloved hand wiping a clean chrome surface → cleaning / maid service
+- A pristine bathroom with no work happening → real estate listing / bathroom remodel
+- A worker in generic hardhat without plumbing tools or pipes visible → construction
+- A landscape or mountain photo (yes, this happened — a mis-tagged stock library entry) → tourism
+- Foliage / green plants → landscaping
+- An empty kitchen sink → kitchen remodel
+- A man holding a tablet in business clothes → tech / consulting
+
+The deeper insight: **photographic content does category recognition before language does.** This is why stock plumbing libraries fail so reliably — most "plumbing" stock photos are actually category-ambiguous chrome shots that could be cleaning, kitchen, or real estate. When picking from any stock library (Pexels, Unsplash, paid), apply the can't-read-English test on every candidate. Reject anything that doesn't pass.
+
+This rule is also why specificity wins. Anderson's painted-pink fleet van against the San Diego skyline is unambiguously a plumbing service vehicle — no other category looks like that. Real fleet beats curated stock for the same reason: nobody mistakes a branded plumber's van for anything else.
+
 ---
 
 ## V. Anti-patterns: what kills conversion
@@ -114,36 +145,4 @@ Practical walkthrough for the next time you're building a v0XX:
 
 1. **Pick the brand color.** One saturated hue. Document the hex code. Apply it to logo, eyebrow, icon pills, CTA, stats, footer accent.
 2. **Pick the type system.** One bold sans-serif family for display + body. Sample weight 700 for H1, 400 for body, slate-not-black for body color.
-3. **Build the 50/50 hero.** Eyebrow + bold H1 with one cyan-or-italic keyword + 50-word lede + button row + phone CTA + star rating + review count. One image on the right.
-4. **Drop in the trust trio.** Four pillars below the hero: Licensed / 24-7 / Up-front pricing / Family-run (or whatever fits).
-5. **Add the big-number stats.** Years, jobs, response time, rating. 60-100px display.
-6. **Add the alternating section backgrounds.** White → emphasis → white → emphasis. Pick one emphasis color (deep navy or brand-band).
-7. **Build the service cards.** Real photo + line-icon overlay + bold name + 1-2 line desc + Schedule link.
-8. **Drop in the offer cards.** $X off / Free X / Discount-for-seniors. Brand-colored CTAs.
-9. **Add the about section.** Real founder photo + Since-YYYY framing + stats grid + tagline.
-10. **Add the social proof.** Carousel of Google reviews with platform attribution. Star ratings in gold.
-11. **Add the service area map.** Embedded map with brand-colored pins.
-12. **Add the membership block.** Explicit ongoing-relationship offer.
-13. **Repeat the hero CTA in the footer.** Phone + schedule pill + tagline.
-14. **Pick the decorative motif.** One graphic mark that recurs in margins / band edges / stat-callouts.
-15. **Apply the text-motion rules** from [text-motion-spec.md](./text-motion-spec.md): `fx-words` on H1, `fx-letters` on H2s, `fx-row` on cards/lists.
-
-Then — and this is the part that turns a demo into a deal-closer — **leave specificity slots.** Empty placeholders for: the real fleet photo, the real owner portrait, the real review count from Google API, the real team grid, the real service-area pins. When the prospect signs and provides these, they slot in without a redesign and the site upgrades from "competent template" to "uncopyable brand."
-
----
-
-## VII. Conclusion
-
-The job of a plumbing website is to compress the time between problem and call. Every move in this thesis serves that compression. The 15 structural rules build the floor. Specificity builds the ceiling. Real photography is the wedge.
-
-A site that hits the floor will out-convert a site that misses one or two of the 15. A site that adds specificity — real fleet, real names, real review counts — will out-convert a generic template even if both hit all 15. And the competitive moat for a real local plumber is specificity stacked on top of structure: the template gets them in the game, the specificity wins the customer.
-
-That's the whole thesis.
-
----
-
-## Companion specs
-
-- [plumbing-design-references.md](./plumbing-design-references.md) — the four reference sites with deep-pass observations and the 15-rule ruleset in detail
-- [text-motion-spec.md](./text-motion-spec.md) — the five non-negotiable text-animation rules
-- [reference-handling-protocol.md](./reference-handling-protocol.md) — the always-screenshot-and-view-source protocol
+3. **Build the 50/50 hero.** Eyebrow + bold H1 with one cyan-or-italic keyword + 50-word lede + but
