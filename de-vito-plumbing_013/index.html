@@ -148,7 +148,23 @@ img{max-width:100%;display:block}
 footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
 .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
 .foot-credit a{color:var(--hi)}
-</style>
+
+    /* ===== text-motion engines (Anthony's 5 rules — see references/text-motion-spec.md) ===== */
+    .fx-words .word{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+    .fx-words .word-inner{display:inline-block;transform:translateY(110%);transition:transform .9s cubic-bezier(.215,.61,.355,1);transition-delay:calc(var(--i,0) * 70ms)}
+    .fx-words.in .word-inner{transform:translateY(0)}
+    .fx-letters .letter{display:inline-block;opacity:0;transform:translateY(.5em);transition:opacity .5s ease, transform .5s cubic-bezier(.215,.61,.355,1);transition-delay:calc(var(--i,0) * 22ms)}
+    .fx-letters.in .letter{opacity:1;transform:translateY(0)}
+    .fx-row{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.215,.61,.355,1);transition-delay:var(--row-delay,0ms)}
+    .fx-row.in{opacity:1;transform:none}
+    .kicker-pulse{animation:kicker-pulse 1.4s ease-in-out infinite}
+    @keyframes kicker-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    @media(prefers-reduced-motion:reduce){
+      .fx-words .word-inner,.fx-letters .letter,.fx-row{transition:none;transform:none;opacity:1}
+      .kicker-pulse{animation:none}
+    }
+
+  </style>
 </head>
 <body>
 
@@ -177,9 +193,9 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-si
   <div class="hero-bg" style="background-image:url('https://images.pexels.com/photos/1599791/pexels-photo-1599791.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1800')"></div>
   <div class="hero-grid"></div>
   <div class="wrap hero-inner">
-    <span class="hero-tag"><span class="dot"></span>Open right now · 24 hours</span>
-    <h1 class="display">Cedar Grove plumbing, <em>fixed before sunrise.</em></h1>
-    <p class="hero-lede">Burst pipes don't wait for business hours. Neither does De Vito. A real Cedar Grove plumber answers every call — day, night, holiday, doesn't matter — and most repairs are done by morning.</p>
+    <span class="hero-tag"><span class="dot kicker-pulse"></span>Open right now · 24 hours</span>
+    <h1 class="display fx-words">Cedar Grove plumbing, <em>fixed before sunrise.</em></h1>
+    <p data-row-delay="500" class="hero-lede fx-row">Burst pipes don't wait for business hours. Neither does De Vito. A real Cedar Grove plumber answers every call — day, night, holiday, doesn't matter — and most repairs are done by morning.</p>
     <div class="hero-actions">
       <a href="tel:+19735711411" class="btn-prime">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -199,10 +215,10 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-si
 
 <section class="stat-strip">
   <div class="wrap stat-row">
-    <div class="stat"><div class="stat-num">38<em>+</em></div><div class="stat-label">Years on the call</div></div>
-    <div class="stat"><div class="stat-num">24<em>/</em>7</div><div class="stat-label">Real-person line</div></div>
-    <div class="stat"><div class="stat-num">4<em>.</em>8</div><div class="stat-label">Google rating</div></div>
-    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Towns covered</div></div>
+    <div data-row-delay="0" class="stat fx-row"><div class="stat-num">38<em>+</em></div><div class="stat-label">Years on the call</div></div>
+    <div data-row-delay="80" class="stat fx-row"><div class="stat-num">24<em>/</em>7</div><div class="stat-label">Real-person line</div></div>
+    <div data-row-delay="160" class="stat fx-row"><div class="stat-num">4<em>.</em>8</div><div class="stat-label">Google rating</div></div>
+    <div data-row-delay="240" class="stat fx-row"><div class="stat-num">6</div><div class="stat-label">Towns covered</div></div>
   </div>
 </section>
 
@@ -211,17 +227,17 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-si
     <div class="section-head">
       <div>
         <span class="eyebrow">Our work</span>
-        <h2 class="display">A wide range of <em>plumbing</em> done cleanly.</h2>
+        <h2 class="display fx-letters">A wide range of <em>plumbing</em> done cleanly.</h2>
       </div>
       <p>Six core specialties Cedar Grove leans on us for. Same-day diagnosis, no-trip-back parts policy, and a written estimate before any wrench moves.</p>
     </div>
     <div class="svc-grid">
-      <div class="svc"><span class="svc-num">01 / Emergency</span><h3>Burst-pipe response, day or night</h3><p>Leaks, no-water situations, frozen mains. We answer the phone in person and get a tech rolling — most repairs done before morning.</p><a href="tel:+19735711411" class="svc-link">Call now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      <div class="svc"><span class="svc-num">02 / Water heaters</span><h3>Tankless &amp; traditional install</h3><p>New install or replacement, residential and light commercial. Most jobs same-day or first thing next morning. Honest brand recommendations.</p><a href="tel:+19735711411" class="svc-link">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      <div class="svc"><span class="svc-num">03 / Boilers</span><h3>Diagnose, repair, replace</h3><p>Heat back on without surprises on the bill. We service every major boiler brand — gas, oil, hydronic. Annual tune-up plans available.</p><a href="tel:+19735711411" class="svc-link">Schedule <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      <div class="svc"><span class="svc-num">04 / Drains</span><h3>Cleared the same day</h3><p>Clogged drains, slow sinks, main-line backups. Camera inspection on anything that looks structural so you know what's actually down there.</p><a href="tel:+19735711411" class="svc-link">Call us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      <div class="svc"><span class="svc-num">05 / Pipe repair</span><h3>Open the wall, only as needed</h3><p>Burst, leaking, or corroded pipes — repaired or replaced cleanly. Drywall opened just enough to fix it; we patch and prime so it's not a project for you.</p><a href="tel:+19735711411" class="svc-link">Diagnose <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      <div class="svc"><span class="svc-num">06 / Fixtures</span><h3>Toilets, faucets, valves</h3><p>Running toilets, dripping faucets, broken handles — fixed in one visit. We carry the common parts on the truck so there's no second trip.</p><a href="tel:+19735711411" class="svc-link">Book it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      <div data-row-delay="0" class="svc fx-row"><span class="svc-num">01 / Emergency</span><h3>Burst-pipe response, day or night</h3><p>Leaks, no-water situations, frozen mains. We answer the phone in person and get a tech rolling — most repairs done before morning.</p><a href="tel:+19735711411" class="svc-link">Call now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      <div data-row-delay="80" class="svc fx-row"><span class="svc-num">02 / Water heaters</span><h3>Tankless &amp; traditional install</h3><p>New install or replacement, residential and light commercial. Most jobs same-day or first thing next morning. Honest brand recommendations.</p><a href="tel:+19735711411" class="svc-link">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      <div data-row-delay="160" class="svc fx-row"><span class="svc-num">03 / Boilers</span><h3>Diagnose, repair, replace</h3><p>Heat back on without surprises on the bill. We service every major boiler brand — gas, oil, hydronic. Annual tune-up plans available.</p><a href="tel:+19735711411" class="svc-link">Schedule <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      <div data-row-delay="240" class="svc fx-row"><span class="svc-num">04 / Drains</span><h3>Cleared the same day</h3><p>Clogged drains, slow sinks, main-line backups. Camera inspection on anything that looks structural so you know what's actually down there.</p><a href="tel:+19735711411" class="svc-link">Call us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      <div data-row-delay="320" class="svc fx-row"><span class="svc-num">05 / Pipe repair</span><h3>Open the wall, only as needed</h3><p>Burst, leaking, or corroded pipes — repaired or replaced cleanly. Drywall opened just enough to fix it; we patch and prime so it's not a project for you.</p><a href="tel:+19735711411" class="svc-link">Diagnose <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      <div data-row-delay="400" class="svc fx-row"><span class="svc-num">06 / Fixtures</span><h3>Toilets, faucets, valves</h3><p>Running toilets, dripping faucets, broken handles — fixed in one visit. We carry the common parts on the truck so there's no second trip.</p><a href="tel:+19735711411" class="svc-link">Book it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
     </div>
   </div>
 </section>
@@ -231,7 +247,7 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-si
     <div class="about-img" style="background-image:url('https://images.pexels.com/photos/4239035/pexels-photo-4239035.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"></div>
     <div>
       <span class="eyebrow">About De Vito</span>
-      <h2>A Cedar Grove plumber. <em>Not a call center.</em></h2>
+      <h2 class="fx-letters">A Cedar Grove plumber. <em>Not a call center.</em></h2>
       <p>De Vito Plumbing &amp; Heating has built a <strong>4.8-star reputation across 38 verified reviews</strong> by doing the simple things consistently — answering the phone, showing up when promised, and fixing the problem cleanly.</p>
       <p style="margin-top:20px">We work across <strong>Cedar Grove, Verona, Caldwell, West Caldwell, Montclair, and Little Falls</strong> — the same neighborhoods we live in. If you've called somebody else and they're sending an answering service, that's the difference.</p>
       <div class="about-pull">A real plumber answers — <strong>no recordings, no menus, no overseas dispatch.</strong></div>
@@ -244,7 +260,7 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-si
     <div class="section-head">
       <div>
         <span class="eyebrow">What neighbors say</span>
-        <h2 class="display">Cedar Grove <em>says it best.</em></h2>
+        <h2 class="display fx-letters">Cedar Grove <em>says it best.</em></h2>
       </div>
       <p>38 Google reviews and counting. Two of the recent ones below — the rest are on Google.</p>
     </div>
@@ -254,12 +270,12 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-si
         <div class="rev-rating-stars">★★★★★</div>
         <div class="rev-rating-meta">across 38 Google reviews</div>
       </div>
-      <div class="rev">
+      <div data-row-delay="0" class="rev fx-row">
         <div class="rev-stars">★★★★★</div>
         <blockquote>"I had a leak and needed help urgently. The gentleman answered right away and plumbers arrived at my home quickly. Professional, efficient, got the job done."</blockquote>
         <div class="rev-attr"><div class="rev-pic" style="background-image:url('https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=200')"></div><div><div class="rev-name">Gabriella B.</div><div class="rev-meta">Google · 8 months ago</div></div></div>
       </div>
-      <div class="rev">
+      <div data-row-delay="180" class="rev fx-row">
         <div class="rev-stars">★★★★★</div>
         <blockquote>"Leaking water tank late in the evening — super responsive, new tank installed by first thing the next morning. Friendly people. Definitely call them again."</blockquote>
         <div class="rev-attr"><div class="rev-pic" style="background-image:url('https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=200')"></div><div><div class="rev-name">Carol S.</div><div class="rev-meta">Google · 1 year ago</div></div></div>
@@ -273,23 +289,23 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-si
     <div class="area-hours">
       <div>
         <span class="eyebrow">Service area</span>
-        <h2>Towns we serve, <em style="font-style:normal;color:var(--hi)">door to door.</em></h2>
+        <h2 class="fx-letters">Towns we serve, <em style="font-style:normal;color:var(--hi)">door to door.</em></h2>
         <ul class="area-list">
-          <li>Cedar Grove</li><li>Verona</li><li>Caldwell</li><li>West Caldwell</li><li>Montclair</li><li>Little Falls</li>
+          <li data-row-delay="0" class="fx-row">Cedar Grove</li><li data-row-delay="50" class="fx-row">Verona</li><li data-row-delay="100" class="fx-row">Caldwell</li><li data-row-delay="150" class="fx-row">West Caldwell</li><li data-row-delay="200" class="fx-row">Montclair</li><li data-row-delay="250" class="fx-row">Little Falls</li>
         </ul>
         <p style="color:var(--soft);font-size:14px;margin-top:24px;line-height:1.7">If you're outside this list and within ~15 minutes, give us a call anyway — we go further for emergencies.</p>
       </div>
       <div>
         <span class="eyebrow">Hours</span>
-        <h2>Open <em style="font-style:normal;color:var(--hi)">around the clock.</em></h2>
+        <h2 class="fx-letters">Open <em style="font-style:normal;color:var(--hi)">around the clock.</em></h2>
         <ul class="hrs-list">
-          <li><span class="day">Monday</span><span class="time">24 hrs</span></li>
-          <li><span class="day">Tuesday</span><span class="time">24 hrs</span></li>
-          <li><span class="day">Wednesday</span><span class="time">24 hrs</span></li>
-          <li><span class="day">Thursday</span><span class="time">24 hrs</span></li>
-          <li><span class="day">Friday</span><span class="time">24 hrs</span></li>
-          <li><span class="day">Saturday</span><span class="time">24 hrs</span></li>
-          <li><span class="day">Sunday</span><span class="time">24 hrs</span></li>
+          <li data-row-delay="0" class="fx-row"><span class="day">Monday</span><span class="time">24 hrs</span></li>
+          <li data-row-delay="40" class="fx-row"><span class="day">Tuesday</span><span class="time">24 hrs</span></li>
+          <li data-row-delay="80" class="fx-row"><span class="day">Wednesday</span><span class="time">24 hrs</span></li>
+          <li data-row-delay="120" class="fx-row"><span class="day">Thursday</span><span class="time">24 hrs</span></li>
+          <li data-row-delay="160" class="fx-row"><span class="day">Friday</span><span class="time">24 hrs</span></li>
+          <li data-row-delay="200" class="fx-row"><span class="day">Saturday</span><span class="time">24 hrs</span></li>
+          <li data-row-delay="240" class="fx-row"><span class="day">Sunday</span><span class="time">24 hrs</span></li>
         </ul>
         <div class="hrs-note">Yes, even <em>Sunday at 2am.</em> Day or night — call anytime.</div>
       </div>
@@ -301,7 +317,7 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-si
   <div class="final-bg" style="background-image:url('https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1800')"></div>
   <div class="wrap final-inner">
     <span class="eyebrow">When something breaks</span>
-    <h2>Don't wait <em>for morning.</em></h2>
+    <h2 class="fx-letters">Don't wait <em>for morning.</em></h2>
     <a href="tel:+19735711411" class="final-phone">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       (973) 571-1411
@@ -316,6 +332,49 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mute);font-si
     <span class="foot-credit">Site by <a href="https://slatepress.co" target="_blank" rel="noopener">Slatepress</a></span>
   </div>
 </footer>
+
+
+<script>
+(function(){
+  function splitWords(root){
+    const walk=(parent)=>{const out=document.createDocumentFragment();
+      for(const node of Array.from(parent.childNodes)){
+        if(node.nodeType===Node.TEXT_NODE){const words=node.textContent.split(/(\s+)/);
+          for(const w of words){
+            if(/^\s+$/.test(w)){out.appendChild(document.createTextNode(w));continue}
+            if(w==="")continue;
+            const word=document.createElement('span');word.className='word';
+            word.style.setProperty('--i',root._wordIdx++);
+            const inner=document.createElement('span');inner.className='word-inner';inner.textContent=w;
+            word.appendChild(inner);out.appendChild(word);
+          }
+        } else if(node.nodeType===Node.ELEMENT_NODE){
+          const clone=node.cloneNode(false);clone.appendChild(walk(node));out.appendChild(clone);
+        }
+      }
+      return out;
+    };
+    root._wordIdx=0;const replaced=walk(root);root.innerHTML='';root.appendChild(replaced);
+  }
+  function splitLetters(root){
+    const text=root.textContent;root.textContent='';let i=0;
+    for(const ch of text){
+      if(ch===' '){root.appendChild(document.createTextNode(' '));continue}
+      const span=document.createElement('span');span.className='letter';
+      span.style.setProperty('--i',i++);span.textContent=ch;root.appendChild(span);
+    }
+  }
+  document.querySelectorAll('.fx-words').forEach(splitWords);
+  document.querySelectorAll('.fx-letters').forEach(splitLetters);
+  document.querySelectorAll('.fx-row').forEach(el=>{
+    const d=el.getAttribute('data-row-delay');if(d)el.style.setProperty('--row-delay',d+'ms');
+  });
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.15,rootMargin:'0px 0px -10% 0px'});
+  document.querySelectorAll('.fx-words, .fx-letters, .fx-row').forEach(el=>io.observe(el));
+})();
+</script>
 
 </body>
 </html>

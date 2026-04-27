@@ -205,7 +205,23 @@ img{max-width:100%;display:block}
 footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;font-size:13px;border-top:1px solid rgba(255,255,255,.08)}
 .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .foot-credit a{color:var(--gold);font-weight:600}
-</style>
+
+    /* ===== text-motion engines (Anthony's 5 rules — see references/text-motion-spec.md) ===== */
+    .fx-words .word{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+    .fx-words .word-inner{display:inline-block;transform:translateY(110%);transition:transform .9s cubic-bezier(.215,.61,.355,1);transition-delay:calc(var(--i,0) * 70ms)}
+    .fx-words.in .word-inner{transform:translateY(0)}
+    .fx-letters .letter{display:inline-block;opacity:0;transform:translateY(.5em);transition:opacity .5s ease, transform .5s cubic-bezier(.215,.61,.355,1);transition-delay:calc(var(--i,0) * 22ms)}
+    .fx-letters.in .letter{opacity:1;transform:translateY(0)}
+    .fx-row{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.215,.61,.355,1);transition-delay:var(--row-delay,0ms)}
+    .fx-row.in{opacity:1;transform:none}
+    .kicker-pulse{animation:kicker-pulse 1.4s ease-in-out infinite}
+    @keyframes kicker-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    @media(prefers-reduced-motion:reduce){
+      .fx-words .word-inner,.fx-letters .letter,.fx-row{transition:none;transform:none;opacity:1}
+      .kicker-pulse{animation:none}
+    }
+
+  </style>
 </head>
 <body>
 
@@ -252,9 +268,9 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.19 4.5 2.36 7.27L12 16.63l-6.17 4.5 2.36-7.27L2 9.36h7.61z"/></svg>
         Serving Cedar Grove since 1986
       </span>
-      <h1>The Cedar Grove plumber <em>your neighbors call.</em></h1>
+      <h1 class="fx-words">The Cedar Grove plumber <em>your neighbors call.</em></h1>
       <p class="hero-tag-line">"Nobody answers the phone like we do."<span class="tm">®</span></p>
-      <p class="hero-lede">De Vito Plumbing &amp; Heating has been privileged to serve thousands of Cedar Grove and Essex County families for nearly 40 years. Family-owned, family-run, family-accountable.</p>
+      <p data-row-delay="500" class="hero-lede fx-row">De Vito Plumbing &amp; Heating has been privileged to serve thousands of Cedar Grove and Essex County families for nearly 40 years. Family-owned, family-run, family-accountable.</p>
       <div class="hero-actions">
         <a href="tel:+19735711411" class="btn-prime">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -288,25 +304,25 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
   <div class="wrap">
     <div class="offers-head">
       <span class="eyebrow">Current offers</span>
-      <h2>Check out our <em>April specials.</em></h2>
+      <h2 class="fx-letters">Check out our <em>April specials.</em></h2>
     </div>
     <div class="offers-grid">
-      <div class="offer">
+      <div data-row-delay="0" class="offer fx-row">
         <div class="offer-amt"><small>$</small>49</div>
         <div class="offer-title">Drain Tune-Up</div>
         <div class="offer-fine">*Some restrictions may apply. Cannot be combined with other offers. Valid through 4/30/26.</div>
       </div>
-      <div class="offer">
+      <div data-row-delay="80" class="offer fx-row">
         <div class="offer-amt"><small>$</small>500<span style="font-size:14px;display:block;color:var(--navy);font-weight:600;margin-top:2px">OFF</span></div>
         <div class="offer-title">New Water Heater</div>
         <div class="offer-fine">Traditional or tankless. Cannot be combined with other offers. Valid through 4/30/26.</div>
       </div>
-      <div class="offer">
+      <div data-row-delay="160" class="offer fx-row">
         <div class="offer-amt">FREE</div>
         <div class="offer-title">In-Home Estimate</div>
         <div class="offer-fine">No-charge written estimate before any work begins. Inside our service area.</div>
       </div>
-      <div class="offer">
+      <div data-row-delay="240" class="offer fx-row">
         <div class="offer-amt"><span class="pct">15</span><small>%</small><span style="font-size:14px;display:block;color:var(--navy);font-weight:600;margin-top:2px">OFF</span></div>
         <div class="offer-title">For Senior Neighbors</div>
         <div class="offer-fine">15% off any service for residents age 65+. Just mention when you call.</div>
@@ -319,41 +335,41 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Our services</span>
-      <h2>Plumbing, drains, water heaters, &amp; <em>boiler service.</em></h2>
+      <h2 class="fx-letters">Plumbing, drains, water heaters, &amp; <em>boiler service.</em></h2>
       <p>Six core specialties Cedar Grove leans on us for. Same-day diagnosis, written estimate first, no second trip for parts.</p>
     </div>
     <div class="svc-grid">
-      <div class="svc">
+      <div data-row-delay="0" class="svc fx-row">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
         <h3>Emergency plumbing</h3>
         <p>Leaks, burst pipes, no-water situations. 24 hours, every day, holidays included. Most repairs done before morning.</p>
         <a href="tel:+19735711411" class="svc-link">Call now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="svc">
+      <div data-row-delay="80" class="svc fx-row">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6M10 16h4"/></svg></div>
         <h3>Water heater install</h3>
         <p>Tankless and traditional. Repair, replacement, new install. Most jobs same-day or first thing next morning.</p>
         <a href="tel:+19735711411" class="svc-link">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="svc">
+      <div data-row-delay="160" class="svc fx-row">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Boiler service</h3>
         <p>Diagnose, repair, replace. Heat back on without surprises on the bill. Annual tune-up plans available.</p>
         <a href="tel:+19735711411" class="svc-link">Schedule <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="svc">
+      <div data-row-delay="240" class="svc fx-row">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M5 8h14M7 16h10M9 20h6"/></svg></div>
         <h3>Drain cleaning</h3>
         <p>Clogged drains, slow sinks, main-line backups. Camera inspection on anything that looks structural.</p>
         <a href="tel:+19735711411" class="svc-link">Call us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="svc">
+      <div data-row-delay="320" class="svc fx-row">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h6v6H3zM15 9h6v6h-6zM9 12h6"/></svg></div>
         <h3>Pipe repair</h3>
         <p>Burst, leaking, or corroded pipes — repaired or replaced cleanly. Drywall opened only as much as needed.</p>
         <a href="tel:+19735711411" class="svc-link">Diagnose <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="svc">
+      <div data-row-delay="400" class="svc fx-row">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Toilets &amp; faucets</h3>
         <p>Running toilets, dripping faucets, broken handles fixed in one visit. Common parts on the truck.</p>
@@ -367,15 +383,15 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
   <div class="wrap member-inner">
     <div>
       <span class="eyebrow" style="color:var(--gold)"><span style="background:var(--gold)"></span>The De Vito Plan</span>
-      <h2>Become a <em>Cedar Grove household.</em></h2>
+      <h2 class="fx-letters">Become a <em>Cedar Grove household.</em></h2>
       <p class="member-lede">Annual maintenance plan for Cedar Grove neighbors. One yearly inspection of your plumbing, water heater, and boiler — plus 15% off any service call, priority dispatch, and a transferable warranty if you sell the house.</p>
       <a href="tel:+19735711411" class="member-cta">Become a member →</a>
     </div>
     <div class="member-features">
-      <div class="mf"><div class="mf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h3>Peace of mind</h3><p>Annual tune-up of every system in the house. Catch problems early.</p></div>
-      <div class="mf"><div class="mf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div><h3>15% discount</h3><p>Off the normal rate for any service or repair you call us for.</p></div>
-      <div class="mf"><div class="mf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div><h3>Priority dispatch</h3><p>Members go to the front of the line during peak demand windows.</p></div>
-      <div class="mf"><div class="mf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Transferable</h3><p>Selling the house? Your buyer inherits the plan — adds resale value.</p></div>
+      <div data-row-delay="0" class="mf fx-row"><div class="mf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h3>Peace of mind</h3><p>Annual tune-up of every system in the house. Catch problems early.</p></div>
+      <div data-row-delay="100" class="mf fx-row"><div class="mf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div><h3>15% discount</h3><p>Off the normal rate for any service or repair you call us for.</p></div>
+      <div data-row-delay="200" class="mf fx-row"><div class="mf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div><h3>Priority dispatch</h3><p>Members go to the front of the line during peak demand windows.</p></div>
+      <div data-row-delay="300" class="mf fx-row"><div class="mf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Transferable</h3><p>Selling the house? Your buyer inherits the plan — adds resale value.</p></div>
     </div>
   </div>
 </section>
@@ -385,14 +401,14 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
     <div class="about-img" style="background-image:url('https://images.pexels.com/photos/8961036/pexels-photo-8961036.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"></div>
     <div>
       <span class="eyebrow">About De Vito</span>
-      <h2>Two generations on the same <em>Cedar Grove streets.</em></h2>
+      <h2 class="fx-letters">Two generations on the same <em>Cedar Grove streets.</em></h2>
       <p>Frank De Vito Sr. opened the doors in 1986 with a single van and a handwritten ledger. Almost 40 years later, his son Frank Jr. runs the dispatch board and his grandson Anthony is on the trucks. The phone number, the address, the name on the side of every van — none of that has changed.</p>
       <p style="margin-top:18px">It's why we can promise things other companies can't: a real plumber answers your call, the technician at your door is family-trained, and if something goes wrong on a job, you can find us at the diner on Pompton Ave.</p>
       <div class="about-stats">
-        <div class="about-stat"><div class="about-stat-num">38+</div><div class="about-stat-label">Years in Cedar Grove</div></div>
-        <div class="about-stat"><div class="about-stat-num">4.8</div><div class="about-stat-label">Avg Google rating</div></div>
-        <div class="about-stat"><div class="about-stat-num">38</div><div class="about-stat-label">Verified reviews</div></div>
-        <div class="about-stat"><div class="about-stat-num">A+</div><div class="about-stat-label">BBB rating</div></div>
+        <div data-row-delay="0" class="about-stat fx-row"><div class="about-stat-num">38+</div><div class="about-stat-label">Years in Cedar Grove</div></div>
+        <div data-row-delay="60" class="about-stat fx-row"><div class="about-stat-num">4.8</div><div class="about-stat-label">Avg Google rating</div></div>
+        <div data-row-delay="120" class="about-stat fx-row"><div class="about-stat-num">38</div><div class="about-stat-label">Verified reviews</div></div>
+        <div data-row-delay="180" class="about-stat fx-row"><div class="about-stat-num">A+</div><div class="about-stat-label">BBB rating</div></div>
       </div>
     </div>
   </div>
@@ -402,7 +418,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">What neighbors say</span>
-      <h2>4.8 stars across <em>38 verified Google reviews.</em></h2>
+      <h2 class="fx-letters">4.8 stars across <em>38 verified Google reviews.</em></h2>
       <p>The full list is public on Google Maps — search "De Vito Plumbing Cedar Grove." Two of the most recent below.</p>
     </div>
     <div class="rev-grid">
@@ -411,12 +427,12 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
         <div class="stars">★★★★★</div>
         <p>Verified Google rating across 38 reviews. Updated weekly.</p>
       </div>
-      <div class="rev-card">
+      <div data-row-delay="0" class="rev-card fx-row">
         <div class="rev-stars">★★★★★</div>
         <blockquote>"I had a leak and needed help urgently. The gentleman answered right away and plumbers arrived at my home quickly. Professional, efficient, got the job done."</blockquote>
         <div class="rev-card-attr"><div class="rev-pic" style="background-image:url('https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=200')"></div><div><div class="rev-card-name">Gabriella B.</div><div class="rev-card-meta">Google · 8 months ago</div></div></div>
       </div>
-      <div class="rev-card">
+      <div data-row-delay="180" class="rev-card fx-row">
         <div class="rev-stars">★★★★★</div>
         <blockquote>"Leaking water tank late in the evening — super responsive that night, new water tank installed by first thing the next morning. Friendly people. Definitely call them again."</blockquote>
         <div class="rev-card-attr"><div class="rev-pic" style="background-image:url('https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=200')"></div><div><div class="rev-card-name">Carol S.</div><div class="rev-card-meta">Google · 1 year ago</div></div></div>
@@ -429,31 +445,31 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Service area &amp; hours</span>
-      <h2>Door to door, <em>around the clock.</em></h2>
+      <h2 class="fx-letters">Door to door, <em>around the clock.</em></h2>
     </div>
     <div class="ah-grid">
       <div class="ah-card">
         <h3>Towns we serve</h3>
         <ul class="area-list">
-          <li>Cedar Grove</li>
-          <li>Verona</li>
-          <li>Caldwell</li>
-          <li>West Caldwell</li>
-          <li>Montclair</li>
-          <li>Little Falls</li>
+          <li data-row-delay="0" class="fx-row">Cedar Grove</li>
+          <li data-row-delay="50" class="fx-row">Verona</li>
+          <li data-row-delay="100" class="fx-row">Caldwell</li>
+          <li data-row-delay="150" class="fx-row">West Caldwell</li>
+          <li data-row-delay="200" class="fx-row">Montclair</li>
+          <li data-row-delay="250" class="fx-row">Little Falls</li>
         </ul>
         <p style="margin-top:24px;color:var(--ink-soft);font-size:14px;line-height:1.6;font-style:italic;font-family:'Source Serif 4'">If you're outside this list and within ~15 minutes, give us a call — we go further for emergencies.</p>
       </div>
       <div class="ah-card">
         <h3>Hours</h3>
         <ul class="hrs-list">
-          <li><span class="day">Monday</span><span class="time">Open 24 hours</span></li>
-          <li><span class="day">Tuesday</span><span class="time">Open 24 hours</span></li>
-          <li><span class="day">Wednesday</span><span class="time">Open 24 hours</span></li>
-          <li><span class="day">Thursday</span><span class="time">Open 24 hours</span></li>
-          <li><span class="day">Friday</span><span class="time">Open 24 hours</span></li>
-          <li><span class="day">Saturday</span><span class="time">Open 24 hours</span></li>
-          <li><span class="day">Sunday</span><span class="time">Open 24 hours</span></li>
+          <li data-row-delay="0" class="fx-row"><span class="day">Monday</span><span class="time">Open 24 hours</span></li>
+          <li data-row-delay="40" class="fx-row"><span class="day">Tuesday</span><span class="time">Open 24 hours</span></li>
+          <li data-row-delay="80" class="fx-row"><span class="day">Wednesday</span><span class="time">Open 24 hours</span></li>
+          <li data-row-delay="120" class="fx-row"><span class="day">Thursday</span><span class="time">Open 24 hours</span></li>
+          <li data-row-delay="160" class="fx-row"><span class="day">Friday</span><span class="time">Open 24 hours</span></li>
+          <li data-row-delay="200" class="fx-row"><span class="day">Saturday</span><span class="time">Open 24 hours</span></li>
+          <li data-row-delay="240" class="fx-row"><span class="day">Sunday</span><span class="time">Open 24 hours</span></li>
         </ul>
       </div>
     </div>
@@ -463,7 +479,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
 <section class="final">
   <div class="wrap final-inner">
     <span class="eyebrow" style="color:var(--gold)">When something breaks</span>
-    <h2>Don't wait <em>for morning.</em></h2>
+    <h2 class="fx-letters">Don't wait <em>for morning.</em></h2>
     <a href="tel:+19735711411" class="final-phone">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       (973) 571-1411
@@ -478,6 +494,49 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:36px 0;fon
     <span class="foot-credit">Site by <a href="https://slatepress.co" target="_blank" rel="noopener">Slatepress</a></span>
   </div>
 </footer>
+
+
+<script>
+(function(){
+  function splitWords(root){
+    const walk=(parent)=>{const out=document.createDocumentFragment();
+      for(const node of Array.from(parent.childNodes)){
+        if(node.nodeType===Node.TEXT_NODE){const words=node.textContent.split(/(\s+)/);
+          for(const w of words){
+            if(/^\s+$/.test(w)){out.appendChild(document.createTextNode(w));continue}
+            if(w==="")continue;
+            const word=document.createElement('span');word.className='word';
+            word.style.setProperty('--i',root._wordIdx++);
+            const inner=document.createElement('span');inner.className='word-inner';inner.textContent=w;
+            word.appendChild(inner);out.appendChild(word);
+          }
+        } else if(node.nodeType===Node.ELEMENT_NODE){
+          const clone=node.cloneNode(false);clone.appendChild(walk(node));out.appendChild(clone);
+        }
+      }
+      return out;
+    };
+    root._wordIdx=0;const replaced=walk(root);root.innerHTML='';root.appendChild(replaced);
+  }
+  function splitLetters(root){
+    const text=root.textContent;root.textContent='';let i=0;
+    for(const ch of text){
+      if(ch===' '){root.appendChild(document.createTextNode(' '));continue}
+      const span=document.createElement('span');span.className='letter';
+      span.style.setProperty('--i',i++);span.textContent=ch;root.appendChild(span);
+    }
+  }
+  document.querySelectorAll('.fx-words').forEach(splitWords);
+  document.querySelectorAll('.fx-letters').forEach(splitLetters);
+  document.querySelectorAll('.fx-row').forEach(el=>{
+    const d=el.getAttribute('data-row-delay');if(d)el.style.setProperty('--row-delay',d+'ms');
+  });
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.15,rootMargin:'0px 0px -10% 0px'});
+  document.querySelectorAll('.fx-words, .fx-letters, .fx-row').forEach(el=>io.observe(el));
+})();
+</script>
 
 </body>
 </html>
