@@ -11,40 +11,172 @@ what I actually observed when I screenshot + viewed source for each reference. *
 authoritative read** — when palette/type/move questions come up in a future session, read this
 before guessing.
 
+## Reference index
+
+Anthony assigns short Ref IDs as we go. Use these in conversation when picking which DNA to
+apply ("v0XX takes Ref 001's hero pattern + Ref 002's IA").
+
+| Ref ID | Site | DNA tag | Status |
+|---|---|---|---|
+| **Ref 001** | Plumbing X (BRIX / Webflow) | Visual ceiling | Documented (deep pass 2026-04-27) |
+| _unassigned_ | Plumbly (Framer) | Information architecture | Documented (light pass 2026-04-27) |
+| _unassigned_ | ProHauz (BoldThemes WP) | Feature density / conversion | Documented (light pass 2026-04-27) |
+| _unassigned_ | Anderson Plumbing | Human warmth / social proof | Documented (light pass 2026-04-27) |
+
 ---
 
-## 1. Visual ceiling — Plumbing X (BRIX / Webflow Marketplace)
+## Ref 001 — Visual ceiling — Plumbing X (BRIX / Webflow Marketplace)
 
 **URL:** https://plumbingtemplate-showcase.webflow.io/home
+**Last verified:** 2026-04-27 (screenshots + source extracted via Chrome MCP)
 
-**What I actually saw:**
-- **Palette:** white background, single high-saturation royal-blue accent (looks like ~#3F4DFF
-  / Pantone reflex blue). Bright. No dark mode, no gradients, no gold.
-- **Type:** bold heavy-weight sans-serif display ("Best plumbing & repair solutions" — almost
-  black weight, very wide tracking on small caps eyebrow "PLUMBERS").
-- **Photography:** large high-quality residential portraits — a smiling worker in a blue hard
-  hat under a kitchen faucet fills the right half of the hero. Not stock-feeling, the lighting
-  is studio-bright but believable.
-- **Layout:** clean utility bar at top (email + phone + address + social row). Centered nav
-  with cart counter (it's actually a Webflow *ecommerce* template, hence the cart). One big
-  blue CTA button "Get a quote" pill-rounded-rectangle. Hero is a 50/50 split, text-left
-  photo-right, with massive type taking the height.
-- **Distinguishing moves:**
-  - The blue is *one* accent. It carries everything — the logo, the eyebrow, the CTA. No
-    secondary accents.
-  - Eyebrow text is small, all-caps, blue, with letter-spacing.
-  - Drop logo is a stylized blue water-drop icon.
-  - Heavy display type doing all the heavy lifting (no tagline, no kicker beyond the blue
-    eyebrow).
+### Observed palette (from computed styles)
 
-**The transferable lesson:** "visual ceiling" here doesn't mean dark/luxe/magazine. It means
-**a single confident accent + heavy display type + great photography**. Restraint, not
-maximalism. Less is more.
+- **Page background:** `#FFFFFF` white — primary canvas
+- **Accent / CTA / links:** `#3083FF` royal-blue (rgb 48, 131, 255). Used for Get-a-quote
+  button, "PLUMBERS" eyebrow, water-drop logo, email/phone/location utility-bar icons in pale
+  pill backgrounds, and slider-arrow circles.
+- **Display headline color:** `#182944` deep navy (rgb 24, 41, 68). H1 + H2 text on light
+  sections.
+- **Body text:** `#6E7891` soft slate-gray (rgb 110, 120, 145) — NOT pure black. Body copy is
+  noticeably softer than headlines, which gives the page a calm-confident feel.
+- **Dark section background:** `#182944` same deep navy (sections used for "About — We focus
+  on customer satisfaction and quality" and "Our work" — used for emphasis blocks, not the
+  whole page).
+- **Yellow micro-accents:** amber/yellow (~#F5A523 territory) on stat `+` signs (alternating
+  with blue) and the "OUR WORK" eyebrow against dark navy. Easy to miss but it's a real third
+  hue.
+- **Pale-blue tint:** light sky-blue (~#E1ECFF territory) used for circular icon-pill
+  backgrounds in service cards and the "Visit our office" trio.
 
-**Where v013 went wrong:** I shipped dark navy + electric cyan + gold + serif display ("magazine
-luxury" archetype). That's a different visual ceiling — closer to a SaaS landing page than to
-this template. The actual Plumbing X target is *bright minimal-ish corporate*, not *dark
-editorial*.
+So the palette is **not** "single accent" as I first wrote — it's actually **white +
+royal-blue + deep navy + soft slate + amber + pale sky-tint**, with the dark navy used as
+an alternating-section background for emphasis.
+
+### Observed typography (from computed styles)
+
+- **Family:** `Outfit, sans-serif` — modern geometric sans, used for body AND display. Single
+  family throughout.
+- **H1:** 68px, weight 700 (bold), color #182944 deep navy. Letter-spacing tight.
+- **Eyebrows:** small all-caps, blue or yellow depending on background, with wide tracking.
+- **Body copy:** ~17–18px, weight 400, color #6E7891 slate.
+- **No serif anywhere.** No display alternate, no italic, no condensed.
+
+### Observed CTA shape
+
+- **Primary button:** background #3083FF royal-blue, white text, **border-radius 10px**
+  (soft rectangle, NOT a pill, NOT square), padding 26px 38px (very generous — buttons feel
+  big and tappable).
+- **Secondary button:** transparent fill, royal-blue text, royal-blue 1px stroke, same
+  border-radius and padding. Sits next to primary as a row.
+
+### Observed photography
+
+One large hero portrait spanning the full right column:
+- Worker in a bright royal-blue hard hat (matching the palette) at top
+- Continues down through chest with arms crossed, blue work overalls, mustard-yellow gloves
+- Composed against a real kitchen with a curly chrome flexible faucet/sprayer arm and white
+  cabinetry
+- Lighting is studio-bright but believable — feels professional, not over-glossy stock
+
+In the **About** section (dark navy bg): bearded man, white hard hat, navy work jacket, giving
+a thumbs-up directly to camera. Mid-40s, friendly, real-feeling.
+
+In the **Services 3-card slider**:
+- Card 1 — chrome wall-tap with bright blue PEX pipe leading in, against textured concrete-gray
+- Card 2 — two hands on a chrome pipe wrench at a P-trap/supply-line, white sink edge visible
+- Card 3 — top-down white sink with chrome faucet, hand in royal-blue glove around drain hole
+
+Each card photo sits above a circular icon-pill (faucet / crossed-tools / drain) in pale-blue.
+
+In the **Our Work** section (dark navy bg): video thumbnail with a circular white play-button
++ blue play triangle. Thumbnail shows a white-hard-hat worker gesturing while holding a
+clipboard. Implies an embedded YouTube/Vimeo intro video.
+
+**Photography style overall:** real-feeling stock or commissioned shoots. Bright studio
+lighting, mid-shallow depth of field, slightly warmer-than-neutral white balance. People
+center-frame, looking at camera or absorbed in work — never staged-corporate-fake.
+
+### Observed iconography
+
+- **Logo mark:** stylized royal-blue water-drop SVG, paired with bold dark-navy "Plumbing X"
+  wordmark.
+- **Utility bar icons:** small line-icons (envelope, phone, location-pin) in pale-blue
+  circular backgrounds. Plus a row of social icons (Facebook, Twitter, Instagram, Yelp, Google)
+  in dark-gray on the right.
+- **Service-card icons:** royal-blue line-art (faucet, crossed-tools, drain) on pale-blue
+  circular pills.
+- **Slider controls:** royal-blue circular buttons with white arrow icons, sitting outside the
+  card row.
+
+### Observed layout / structure
+
+- **Top utility bar** (white): contact email · phone · address · social icons. Subtle, sits
+  above the main nav.
+- **Main nav** (white, sticky-feeling): logo left, centered nav links (Home / About /
+  Services / Pages dropdown / Cart counter), royal-blue "Get a quote" CTA right.
+- **Hero**: 50/50 split, text left + photo right. Eyebrow + 68px H1 + lede paragraph + two-
+  button row. Photo is full-bleed-into-rounded-frame on the right.
+- **About section** (dark navy): same 50/50 split, photo left (thumbs-up plumber) + text
+  right with stat trio (25+ Years / 500+ Happy clients / 20+ Qualified experts) + "Get a
+  quote" CTA.
+- **Services slider** (white): 3-up card carousel with prev/next arrow controls. Each card is
+  photo + circular icon-pill + bold dark-navy title + 2-line lorem body.
+- **"Our work" section** (dark navy): 50/50 split, text left + video thumbnail right with
+  play overlay.
+- **Subsequent sections (not screenshot this pass):** "Having a problem? We'll fixed it
+  today!", "What our clients say" (testimonials), "Check our lastest articles" (blog cards).
+  H2 count = 6 total. Source confirms these exist; I haven't visually inspected them yet.
+- **Webflow promo strip** at the bottom of every screenshot (purple "Like Plumbing X
+  Webflow Template? Buy Now") and the "Made in Webflow" badge are the marketplace preview
+  wrapper, NOT part of the design. Ignore.
+
+### Source observations
+
+- **HTML:** ~109 KB total, 264 unique CSS classes (Webflow-heavy, includes ecommerce cart
+  classes since this is technically a Webflow Ecommerce template).
+- **Stylesheet:** single hashed Webflow CSS file.
+- **Class taxonomy worth knowing:** `btn-primary` / `btn-secondary` / `btn-circle-primary` /
+  `btn-circle-secondary`, `badge-primary`, `bg-neutral-800` (the dark-navy section bg),
+  `card-testimonial-v1`, `blog-card-*`. Suggests they think of buttons in primary/secondary
+  pairs and have a neutral-darkest token at the 800 weight.
+
+### Distinguishing moves (what makes this site recognizable)
+
+1. **Two-tone alternating sections** — white hero, navy emphasis section, white services,
+   navy "Our work." Repeats. This breaks the page into chapters without dividers.
+2. **Single typeface (Outfit) for everything** — display *and* body. Simplifies the type
+   system and gives the page a uniform geometric voice.
+3. **Soft-rectangle buttons** (10px radius, generous padding) — not pill, not square. Feels
+   modern but not trendy.
+4. **Stat trio with `+` signs** (25+ / 500+ / 20+) where the `+` alternates yellow / blue /
+   yellow — small graphic treatment that adds personality without busying the page.
+5. **Pale-blue icon pills** as secondary visual rhythm — used in utility bar AND in service
+   cards. Creates continuity.
+6. **One vertical hero photo spanning the full right column** — instead of a centered-and-
+   cropped landscape image, the worker stretches floor-to-ceiling, which makes the page
+   feel anchored.
+7. **Body copy in soft slate, NOT black** — calmer feel than typical trade-template "every
+   word maximum-contrast."
+
+### Transferable lesson
+
+"Visual ceiling" here means **a confident two-color base (white + royal-blue) with a third
+deep-navy used for emphasis sections, single-typeface restraint (Outfit), generous soft-
+rectangle CTAs, and one strong vertical hero photo**. The yellow + pale-sky micro-accents add
+detail without breaking the calm. Restraint, not maximalism — but more textured than "single
+accent on white" undersells.
+
+### Where v013 went wrong (to fix on a redo)
+
+- Shipped dark-navy + electric-cyan + gold serif display (SaaS-luxe magazine direction).
+  Should have been white-base + royal-blue + selectively-navy-emphasis with a single sans
+  family.
+- Used Bricolage Grotesque + Inter pair. Should have been a single Outfit-style geometric
+  sans throughout.
+- Used full-bleed dark-navy hero. Should have been white hero with photo on right, navy
+  reserved for the About / Our Work emphasis sections.
+- Missed the `+` -sign stat trio entirely. Missed the pale-blue icon-pill rhythm.
 
 ---
 
@@ -79,123 +211,3 @@ editorial*.
 know where you are in the page; sections breathe; trust signals are placed where decisions get
 made. **Lift the structure, not the palette** — though the vivid blue + black + white triad
 does work.
-
-**Where v014 went wrong:** I shipped pastel cream + sage + peach + sky-blue ("soft Framer
-pastel lifestyle" archetype). The actual Plumbly is *vivid, saturated, confident* — not
-pastel. The IA was right (3-pillar trust trio, process band, etc.) but the palette was a
-miss in the wrong direction.
-
----
-
-## 3. Feature density / conversion — ProHauz (BoldThemes WordPress)
-
-**URL:** https://prohauz.bold-themes.com/plumbing/
-
-**What I actually saw:**
-- **Palette:** dark corporate navy-to-mid-blue gradient hero + white content sections + RED
-  CTA ("Request Job Estimate" button is solid red, partially hidden behind the popup ad in my
-  screenshot but visible). Bright cyan-blue accent for the noun in headlines ("The **Plumber**
-  You Deserve"). Black/dark-grey body type. NOT orange, NOT industrial.
-- **Type:** bold heavy sans-serif headlines with the keyword in bright cyan-blue. Service
-  blocks use **ALL-CAPS uppercase** service names ("TOILET LEAKING," "OVERFLOWING TOILET")
-  paired with small line-art icons.
-- **Photography:** confident smiling bearded plumber in blue overalls right-side of hero,
-  blurred plumbing-tools photo behind. Below: 3-up grid of action shots (different plumbers
-  doing different repairs).
-- **Layout:** thin nav bar with **slash separators** between links ("HOME / ABOUT / BLOG /
-  SHOP / ELEMENTS"). Logo + brand on far left, phone number and BOOK SERVICE CTA on far right.
-  Hero with overlay text + photo. Then 3-photo grid. Then service blocks.
-- **Distinguishing moves:**
-  - **Isometric grayscale illustrations** of houses/rooms used in technical sections (huge,
-    fills half a column). Distinctive — not photographic, not flat-line, not full-color.
-  - Plus-mark grid pattern (`+ + + +`) decorative texture in side margins.
-  - All-caps service names with small icons — packed list of common problems
-    ("LEAKY FAUCET", "BURST PIPE", "OVERFLOWING TOILET") rather than "categories."
-  - Slash separators in nav — a typographic detail that reads "industrial trade."
-
-**The transferable lesson:** density doesn't have to mean orange/loud. ProHauz is *confident
-corporate blue* with red/cyan punctuation, but it packs *more* into the page than the others —
-the isometric illustrations, the plus-mark grid, the all-caps service list, the marketing
-banners. Conversion density = "every section sells something specific."
-
-**Where v015 went wrong:** I shipped orange + black + cream + Barlow-Condensed ("trade
-contractor with marketing budget" archetype). The actual ProHauz is **blue/red corporate**.
-The conversion-density structural moves I added (offers strip, from-pricing, guarantees band)
-are right; the palette is wrong.
-
----
-
-## 4. Human warmth / social proof — Anderson Plumbing, Heating & Air (real local site)
-
-**URL:** https://www.andersonplumbingheatingandair.com/
-
-**What I actually saw:**
-- **Palette:** **hot magenta/pink** (~#D9176F territory) + black + white as primary palette.
-  Yellow gold accent for the rating circle. Subtle pink decorative shapes and divider lines.
-  This is the biggest surprise — I expected patriotic red/white/blue and got bold
-  pink/black/white instead.
-- **Type:** bold black **italic** display headlines ("Nobody wows clients like we do!®") with
-  a registered trademark mark — italic, very bold, almost editorial-condensed. Black sans nav.
-  Pink eyebrow text for "Serving the Greater San Diego Area Since 1978."
-- **Photography:** **their actual fleet van** as the hero — bright-pink-painted Anderson
-  Plumbing Ford Transit electric, with their stylized rose-flower logo on the side, parked in
-  front of a desaturated San Diego skyline. This is the killer move: not stock, not generic,
-  *the actual identifying brand element*.
-- **Layout:** thin top utility bar (current promo banner left + AMP-Member / About / Resources
-  / Careers / Contact / search right). Below: classic three-column header (logo center-left
-  with vintage-stamp framing + "Since 1978" + "PLUMBING HEATING & AIR" stacked, star-rating
-  next, then "24/7 Emergency Support" + phone + pink "Schedule Online" pill on the right).
-  Then a black mega-nav with 8 service categories (Plumbing, Sewer & Drain, Water Quality,
-  Heating, Air Conditioning, HVAC, Indoor Air Quality, Commercial), each with a dropdown
-  caret. Hero below: italic black headline left + van photo right + yellow circular 4.8-rating
-  badge top-right.
-- **Distinguishing moves:**
-  - **Vintage-stamp logo treatment** — "Since 1978" above, "ANDERSON" in a bordered black box,
-    "PLUMBING HEATING & AIR" below. Reads heritage without being old-fashioned.
-  - **Their painted fleet van as hero photography** — high-impact and impossible for
-    competitors to copy.
-  - **Registered trademark on the tagline** ("Nobody wows clients like we do!®") — claims the
-    phrase as IP. Confident.
-  - **8-category mega-nav** — Anderson sells WAY more services than a single-trade plumber.
-    For De Vito (single trade, residential), this is too many; **lift the dropdown structure
-    but not the count**.
-  - **Yellow circular rating badge with gold stars + "out of 4,462 reviews"** — concrete
-    review count is the trust hook, not a vague "trusted by thousands."
-  - **Promo banner** at top ("Beat the Heat - Summer's arrived early! Schedule a tune-up
-    now!") — running marketing fed straight into the chrome.
-  - **Pill-shaped CTAs with leading icons** (calendar for Schedule, phone for Call) — soft
-    pink, generous padding, white text.
-
-**The transferable lesson:** "human warmth" here doesn't mean American-flag-patriotic. It means
-**a brand that owns its identity**: their own van, their own tagline (with ®), their own
-44-year history written into the logo, their own pink color choice that's not in the
-typical-trade-service playbook. Warmth is *specificity*, not template-traditional.
-
-**Where v016 went wrong:** I shipped patriotic navy + red + gold + cream + serif (Source Serif
-4) + family-multi-generation lore + "AMP-style membership block." Those structural moves are
-fine — but I projected "American heritage trade business" onto a brand that's actually doing
-something far more distinctive. Real Anderson would never use navy/red/gold; they're confident
-enough to own pink.
-
----
-
-## How to use this document
-
-**Before any future De Vito design pass** (or any plumbing design pass):
-
-1. Read this file first.
-2. If a new reference is added, navigate to it, screenshot it, view source, and append a new
-   entry here following the same structure (palette, type, photography, layout, distinguishing
-   moves, transferable lesson, where prior attempts went wrong).
-3. When picking a palette for the new design, sample directly from the screenshots in this
-   doc (or re-screenshot if you're worried the source has changed). **Do not invent palettes
-   from archetype memory.**
-4. When proposing a design direction, *cite this document*: "v0XX takes the
-   single-confident-blue-accent move from Plumbing X plus the trust-trio structure from
-   Plumbly's IA." If you can't cite it, you're guessing.
-
-## Companion specs in this folder
-
-- [text-motion-spec.md](./text-motion-spec.md) — five non-negotiable text-animation rules
-- [reference-handling-protocol.md](./reference-handling-protocol.md) — always-screenshot rule
-- [verified-library-spec.md](./verified-library-spec.md) — image library scheme
