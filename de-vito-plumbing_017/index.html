@@ -613,10 +613,16 @@ footer{padding:36px 0;border-top:1px solid var(--line);font-size:13px;color:var(
   }
   function splitLetters(root){
     var text=root.textContent;root.textContent='';var i=0;
-    for(var k=0;k<text.length;k++){var ch=text[k];
-      if(ch===' '){root.appendChild(document.createTextNode(' '));continue;}
-      var span=document.createElement('span');span.className='letter';
-      span.style.setProperty('--i',i++);span.textContent=ch;root.appendChild(span);
+    var parts=text.split(/(\s+)/);
+    for(var p=0;p<parts.length;p++){var seg=parts[p];
+      if(seg===''||/^\s+$/.test(seg)){if(seg!=='')root.appendChild(document.createTextNode(seg));continue;}
+      var wordWrap=document.createElement('span');wordWrap.className='letter-word';
+      wordWrap.style.display='inline-block';wordWrap.style.whiteSpace='nowrap';
+      for(var k=0;k<seg.length;k++){var ch=seg[k];
+        var span=document.createElement('span');span.className='letter';
+        span.style.setProperty('--i',i++);span.textContent=ch;wordWrap.appendChild(span);
+      }
+      root.appendChild(wordWrap);
     }
   }
   function reveal(el){if(!el.classList.contains('in'))el.classList.add('in');}
