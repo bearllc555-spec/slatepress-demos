@@ -8,22 +8,25 @@ explicitly and we add it here so the rule survives across sessions.
 
 | File | What it is | Stated |
 |---|---|---|
+| [plumbing-website-design-thesis.md](./plumbing-website-design-thesis.md) | **Read this first.** Full thesis on how to design a plumbing website — the decision the site is built for, the 15-rule structural floor, the specificity ceiling that separates real local plumbers from templates, image grammar, anti-patterns, and a step-by-step application walkthrough. | 2026-04-27 |
+| [plumbing-design-references.md](./plumbing-design-references.md) | The four-reference DNA for plumbing demos: Plumbing X (visual ceiling), Plumbly (information architecture), ProHauz (feature density / conversion), Anderson Plumbing (human warmth / social proof). Each entry captures what was actually observed via screenshot + source — palette, type, photography, layout, distinguishing moves — and where prior De Vito mockups went wrong on that reference. Read this for the per-site detail behind the thesis. | 2026-04-27 |
 | [text-motion-spec.md](./text-motion-spec.md) | Five non-negotiable text-animation rules: word fade-up on H1, letter reveal on H2, fx-row stagger on lists/cards/paragraphs, kicker-pulse on live-status dots, and a restrained-not-frenetic feel test. Includes the canonical CSS+JS implementation. | 2026-04-27 |
 | [reference-handling-protocol.md](./reference-handling-protocol.md) | Rule for how to handle URLs given as design inspiration: ALWAYS screenshot the page AND view the source code before any creative work. No working from page text or archetype memory alone. | 2026-04-27 |
-| [plumbing-design-references.md](./plumbing-design-references.md) | The four-reference DNA for plumbing demos: Plumbing X (visual ceiling), Plumbly (information architecture), ProHauz (feature density / conversion), Anderson Plumbing (human warmth / social proof). Each entry captures what was actually observed via screenshot + source — palette, type, photography, layout, distinguishing moves — and where prior De Vito mockups went wrong on that reference. Read before any plumbing design pass. | 2026-04-27 |
 
 ## How this gets used
 
 Before any new design pass — a new plumber demo direction, a refresh of an existing version,
 a redesign of the main site, anything visual — read every file in this folder first. The
-rules compound: a design that has motion but ignores reference-handling will hit the right
-animation but the wrong palette; a design that screenshots references but skips motion will
-look right but feel static.
+rules compound:
+
+- A design that has motion but ignores reference-handling will hit the right animation but
+  the wrong palette.
+- A design that screenshots references but skips motion will look right but feel static.
+- A design that follows the references but skips the thesis will lack the strategic spine.
 
 When Anthony states a new rule, add it here as a new file (one rule per file, named after
 the concept), then update this index, then commit. Keeping rules in separate files makes
-them easier to link to in conversation ("see [reference-handling-protocol.md](./reference-handling-protocol.md)")
-than burying them in a single design.md.
+them easier to link to in conversation than burying them in a single design.md.
 
 ## What this is NOT
 
