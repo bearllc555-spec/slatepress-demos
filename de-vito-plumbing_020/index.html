@@ -671,13 +671,75 @@ footer{padding:36px 0;background:var(--ink);color:rgba(255,255,255,.5);font-size
 
 <script>
 (function(){
-  function splitWords(root){const walk=(parent)=>{const out=document.createDocumentFragment();for(const node of Array.from(parent.childNodes)){if(node.nodeType===Node.TEXT_NODE){const words=node.textContent.split(/(\s+)/);for(const w of words){if(/^\s+$/.test(w)){out.appendChild(document.createTextNode(w));continue}if(w==="")continue;const word=document.createElement('span');word.className='word';word.style.setProperty('--i',root._wordIdx++);const inner=document.createElement('span');inner.className='word-inner';inner.textContent=w;word.appendChild(inner);out.appendChild(word);}}else if(node.nodeType===Node.ELEMENT_NODE){const clone=node.cloneNode(false);clone.appendChild(walk(node));out.appendChild(clone);}}return out;};root._wordIdx=0;const replaced=walk(root);root.innerHTML='';root.appendChild(replaced);}
-  function splitLetters(root){const text=root.textContent;root.textContent='';let i=0;for(const ch of text){if(ch===' '){root.appendChild(document.createTextNode(' '));continue}const span=document.createElement('span');span.className='letter';span.style.setProperty('--i',i++);span.textContent=ch;root.appendChild(span);}}
+  function splitWords(root){
+    var walk=function(parent){var out=document.createDocumentFragment();
+      for(var i=0;i<parent.childNodes.length;i++){var node=parent.childNodes[i];
+        if(node.nodeType===Node.TEXT_NODE){var words=node.textContent.split(/(\s+)/);
+          for(var j=0;j<words.length;j++){var w=words[j];
+            if(/^\s+$/.test(w)){out.appendChild(document.createTextNode(w));continue;}
+            if(w==="")continue;
+            var word=document.createElement('span');word.className='word';
+            word.style.setProperty('--i',root._wordIdx++);
+            var inner=document.createElement('span');inner.className='word-inner';inner.textContent=w;
+            word.appendChild(inner);out.appendChild(word);
+          }
+        } else if(node.nodeType===Node.ELEMENT_NODE){
+          var clone=node.cloneNode(false);clone.appendChild(walk(node));out.appendChild(clone);
+        }
+      }
+      return out;
+    };
+    root._wordIdx=0;var replaced=walk(root);root.innerHTML='';root.appendChild(replaced);
+  }
+  function splitLetters(root){
+    var text=root.textContent;root.textContent='';var i=0;
+    for(var k=0;k<text.length;k++){var ch=text[k];
+      if(ch===' '){root.appendChild(document.createTextNode(' '));continue;}
+      var span=document.createElement('span');span.className='letter';
+      span.style.setProperty('--i',i++);span.textContent=ch;root.appendChild(span);
+    }
+  }
+  function reveal(el){if(!el.classList.contains('in'))el.classList.add('in');}
+  function inViewport(el,fudge){
+    var r=el.getBoundingClientRect();
+    return r.top<(window.innerHeight||document.documentElement.clientHeight)*(fudge||1)&&r.bottom>0;
+  }
+
   document.querySelectorAll('.fx-words').forEach(splitWords);
   document.querySelectorAll('.fx-letters').forEach(splitLetters);
-  document.querySelectorAll('.fx-row').forEach(el=>{const d=el.getAttribute('data-row-delay');if(d)el.style.setProperty('--row-delay',d+'ms');});
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.15,rootMargin:'0px 0px -10% 0px'});
-  document.querySelectorAll('.fx-words, .fx-letters, .fx-row').forEach(el=>io.observe(el));
+  document.querySelectorAll('.fx-row').forEach(function(el){
+    var d=el.getAttribute('data-row-delay');if(d)el.style.setProperty('--row-delay',d+'ms');
+  });
+
+  var all=document.querySelectorAll('.fx-words, .fx-letters, .fx-row');
+
+  // Path 1: IntersectionObserver
+  if('IntersectionObserver' in window){
+    try{
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){if(e.isIntersecting){reveal(e.target);io.unobserve(e.target);}});
+      },{threshold:0.15,rootMargin:'0px 0px -10% 0px'});
+      all.forEach(function(el){io.observe(el);});
+    }catch(err){}
+  }
+
+  // Path 2: timeout fallback (700ms) — reveal anything in viewport that IO missed
+  setTimeout(function(){
+    all.forEach(function(el){
+      if(!el.classList.contains('in')&&inViewport(el,1.05)) reveal(el);
+    });
+  },700);
+
+  // Path 3: scroll fallback — catch elements coming into view as user scrolls
+  var scrollHandler=function(){
+    all.forEach(function(el){
+      if(!el.classList.contains('in')&&inViewport(el,1.0)) reveal(el);
+    });
+  };
+  window.addEventListener('scroll',scrollHandler,{passive:true});
+
+  // Path 4: hard guarantee (2.5s) — reveal EVERYTHING regardless of viewport
+  setTimeout(function(){all.forEach(reveal);},2500);
 })();
 </script>
 
