@@ -91,17 +91,17 @@ plumbers in branded uniforms with chrome plumbing fixtures. Anderson goes a step
 with their *actual painted-pink fleet van and named technicians* — that specificity is the
 killer differentiator.
 
-**The hero photo is a category badge — not just decoration.** Stated by Anthony 2026-04-27
-after v017 shipped with a "gloved hand wiping a clean chrome surface" hero photo that
-read instantly as *cleaning service / maid* rather than plumber. **Visitors classify what
-kind of business a site is from the hero photo before they read the headline.** Pool photo →
-pool contractor. Pizza → pizzeria. Pristine bathroom → real estate listing. Gloved hand on
-chrome → maid service. If the photo and the headline contradict each other, the photo wins
-the visitor's gut. The hero must contain an unambiguous plumbing marker (wrench on pipe,
-P-trap mid-install, water heater being serviced, plumber with visible tools, branded fleet
-van). Diagnostic: a non-English-reading visitor should still know it's a plumber from the
-photo alone. Full ruleset in [plumbing-website-design-thesis.md § IV — The category-coding
-test](./plumbing-website-design-thesis.md).
+**The hero photo is a category badge — not just decoration.** Stated by Anthony 2026-04-27,
+tightened later the same day. **The hero MUST show either a full plumber (face/body, with
+plumbing tools or in branded uniform or actively working) OR a branded fleet vehicle.**
+The four references prove the rule: 3/4 show full plumbers (Plumbing X / Plumbly / ProHauz),
+1/4 shows the fleet van (Anderson). None use bare fixtures, hands-only shots, or tools-on-
+their-own. A plumber-coded image is necessary but not sufficient — the hero also has to
+show *who's doing the work*. A clean chrome faucet category-codes as plumbing but fails the
+hero rule because there's no plumber visible. A pair of gloved hands on a boiler controls
+fails for the same reason. The visitor needs both signals at once: "this is a plumber" AND
+"this is a person/truck I'd call." Full ruleset in
+[plumbing-website-design-thesis.md § IV — The category-coding test](./plumbing-website-design-thesis.md).
 
 **Hero is a single dominant image — vertical worker portrait OR fleet vehicle.** Not a
 collage, not a slider, not a video bg. One image carries the hero. Plumbing X = vertical
@@ -208,4 +208,4 @@ Plumbing X (Ref 001) → Plumbly → ProHauz → Anderson (Ref 004)
 The pretty templates show *what to lift structurally* — palette discipline, hero structure,
 trust trio, stats, service cards. Anderson shows *the upgrade* — once the structure is
 right, replace stock with real-brand specificity (real fleet, real technicians, real review
-counts) and the page becomes uncopyable.
+counts) and the page b

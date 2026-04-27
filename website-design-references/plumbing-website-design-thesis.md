@@ -96,18 +96,24 @@ For a customer that doesn't yet have professional photography, the move is: shoo
 
 The diagnostic: **a returning visitor who can't read English should still know what kind of business this is from the hero photo alone.** If the image could plausibly belong to an adjacent category — cleaning service, HVAC, hardware store, kitchen remodeler, real estate listing, generic-construction, landscaping — the photo is wrong, no matter how nice it looks.
 
-For a plumbing site, the hero photo MUST contain at least one unambiguous plumbing marker:
+For a plumbing site, the hero photo MUST show ONE of two things — and nothing else qualifies:
 
-- A wrench on a pipe or fitting (action visible, not a still life)
-- A P-trap, supply line, or chrome plumbing fixture mid-installation
-- A drain-cleaning machine or auger in use
-- A water heater being serviced (visible cylinder + tools)
-- A boiler or its valves
-- A faucet being repaired (hands + tools, not a clean magazine shot)
-- A plumber in a branded uniform with visible plumbing tools (wrench in hand, tool belt, pipe parts)
-- A fleet vehicle with plumbing branding visible (the killer specificity move)
+1. **A full plumber.** A person — face/body visible — who is either holding plumbing tools, wearing a branded plumbing uniform, or actively working on plumbing fixtures. The reference sites prove this: Plumbing X = worker in blue hardhat against kitchen plumbing; Plumbly = silver-haired plumber kneeling at a sink; ProHauz = bearded plumber holding a tablet next to plumbing tools. Three of four references hit this.
 
-What does NOT category-code as plumbing — these all came up as failure cases in the v017–v020 batch:
+2. **A branded fleet vehicle.** A van or truck with the plumbing company's wrap, logo, or branded panels visible. Anderson is the canonical example — their painted-pink Ford Transit against the San Diego skyline. One of four references hits this.
+
+Bonus combo if you can find it: **a plumber standing next to their fleet vehicle** (Anthony's update 2026-04-27 — this is the strongest possible hero because it stacks both signals).
+
+What does NOT qualify — even when the content is technically plumbing-coded:
+
+- **Hands-only shots.** Gloved hands wrapping a wrench on a pipe, hands on a boiler control panel, hands installing a fixture. Plumbing-coded but missing the human/service element. The visitor needs to see WHO is doing the work, not just the work. Failure case: v017–v020 first attempt used `7859953` (hands on Grundfos boiler) for v019. Looked plumbing-y, didn't pass.
+- **Bare fixtures.** A clean chrome faucet, a pristine bathroom, a stainless sink. Even if the fixture is unambiguously plumbing, no person means no service signal. Failure case: v020 first attempt used `4494662` (chrome faucet + blue pipe). Tested perfectly for "plumbing fixture," tested zero for "plumber I should call."
+- **Tools alone.** A pipe wrench on a wood floor, a row of tools on a bench. Equipment without operator reads as "hardware store" or "stock photo library."
+- **Decorative cutaways or illustrations.** Same problem — no human service-provider on screen.
+
+The deeper insight, refined: **plumbing-coded content alone isn't enough. The hero has to answer the visitor's two questions simultaneously: (a) what kind of business is this (plumbing) AND (b) who's doing the work (a plumber, or my plumber's truck pulling up to my house).** A bare fixture answers (a) but not (b). A pair of hands answers (a) but not (b). A full plumber or a branded van answers both.
+
+What does NOT category-code as plumbing AT ALL — these are the harder failures:
 
 - A gloved hand wiping a clean chrome surface → cleaning / maid service
 - A pristine bathroom with no work happening → real estate listing / bathroom remodel
@@ -127,22 +133,4 @@ This rule is also why specificity wins. Anderson's painted-pink fleet van agains
 
 The negative space of this thesis. Things to refuse, even when the customer requests them:
 
-- **Pastel-palette compromises.** "Make it soft and modern with cream and sage and dusty blue." No. Pick one saturated color. Soft pastels read as wedding-vendor or wellness-clinic — wrong category.
-- **Multi-color logos and accents.** Three-color rainbows mean "we couldn't decide." A plumber needs to look decided.
-- **Hidden or footer-only phone numbers.** The most common sin. The phone is the conversion event. Hiding it kills the site.
-- **Slider heroes with three rotating images.** The visitor is in stress; rotating images make the page feel unsettled. One image, one decision.
-- **Video backgrounds in the hero.** Burns mobile data, slows the page, distracts from the CTA. Video belongs lower on the page as a "Meet the team" or "How it works" embed.
-- **Vague social proof.** "Loved by thousands." "Highly rated." These are template claims. Use platform attribution and a specific number.
-- **Stock-photo team grids.** A row of identical-lighting AI-generated portraits with names like "Jacob Jones — Operations Manager" reads as fake. If you don't have real team photos, omit the team grid entirely.
-- **"We serve everyone" service-area copy.** A vague claim of universal coverage reads as a chain. Show a real map with real pins, or list real towns.
-- **Generic stock-template iconography** — flat-shaded vector illustrations of plumbers in 2010-era flat design. Use thin-line iconography in brand color instead.
-
----
-
-## VI. How to apply this thesis to a new plumber demo
-
-Practical walkthrough for the next time you're building a v0XX:
-
-1. **Pick the brand color.** One saturated hue. Document the hex code. Apply it to logo, eyebrow, icon pills, CTA, stats, footer accent.
-2. **Pick the type system.** One bold sans-serif family for display + body. Sample weight 700 for H1, 400 for body, slate-not-black for body color.
-3. **Build the 50/50 hero.** Eyebrow + bold H1 with one cyan-or-italic keyword + 50-word lede + but
+- **Pastel-palette compromises.** "Make it soft and modern with cream and sage and dusty blue." No. Pick one saturated color. Soft pastels read as wedding-vendor or wellness-clini
