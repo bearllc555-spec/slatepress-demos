@@ -1,0 +1,11 @@
+# 2026-04-30: de-vito-plumbing versioned URLs retired.
+# _007 through _020 were design iterations; the winner (_020) is now /de-vito-plumbing/.
+# All recent versioned links redirect to the canonical URL.
+/de-vito-plumbing_017 /de-vito-plumbing/ 301
+/de-vito-plumbing_017/* /de-vito-plumbing/ 301
+/de-vito-plumbing_018 /de-vito-plumbing/ 301
+/de-vito-plumbing_018/* /de-vito-plumbing/ 301
+/de-vito-plumbing_019 /de-vito-plumbing/ 301
+/de-vito-plumbing_019/* /de-vito-plumbing/ 301
+/de-vito-plumbing_020 /de-vito-plumbing/ 301
+/de-vito-plumbing_020/* /de-vito-plumbing/ 301
